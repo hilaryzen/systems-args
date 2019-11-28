@@ -15,8 +15,8 @@ char **parse_args(char *line) {
   */
   int i = 0;
   while (*s != '\0') {
-    args[i] = strsep(&s, " ");
-    printf("%s\n", args[i]);
+    args[i] = strsep(&s, " \t\n");
+    //printf("%s\n", args[i]);
     i++;
   }
   args[i] = NULL;
@@ -32,11 +32,11 @@ int main() {
     *(strchr(line, '\n')) = '\0';
   }
   */
-  printf("Starting\n");
+  //printf("Starting\n");
   char ** args = parse_args(line);
-  printf("Executing\n");
+  //printf("Executing\n");
   execvp(args[0], args);
-  printf("Freeing\n");
+  //printf("Freeing\n");
   free(args);
 
   return 0;
